@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stalk</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪼</text></svg>">
+    <style>
+        :root {
+            --bg: #222;
+            --fg: #ccc;
+        }
+        [data-theme="light"] {
+            --bg: #f5f5f5;
+            --fg: #333;
+        }
+        body {
+            font-family: monospace;
+            background: var(--bg);
+            color: var(--fg);
+            padding: 20px;
+            padding-top: 20px;
+            line-height: 1.6;
+            transition: background 0.2s, color 0.2s;
+            max-width: 600px;
+            margin: 0;
+        }
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .links {
+            margin: 6px 0;
+            overflow-wrap: break-word;
+        }
+        #theme {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            user-select: none;
+            opacity: 0.5;
+            font-size: 28px;
+            padding: 10px;
+            margin: -10px;
+        }
+        #theme:hover {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            body {
+                font-size: 14px;
+                padding: 15px;
+                padding-top: 15px;
+            }
+            .links {
+                margin: 8px 0;
+            }
+            a {
+                padding: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="theme">☀</div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=32" alt=""> <a href="https://x.com/lenbiu">x.com/lenbiu</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" alt=""> <a href="https://www.instagram.com/bennliuu">instagram.com/bennliuu</a></div>
+    <div class="links"><img src="https://cdn.simpleicons.org/github/ccc" alt=""> <a href="https://github.com/liubenjamin">github.com/liubenjamin</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=osu.ppy.sh&sz=32" alt=""> <a href="https://osu.ppy.sh/users/lenbiu">osu.ppy.sh/users/lenbiu</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=last.fm&sz=32" alt=""> <a href="https://www.last.fm/user/liubenjamin">last.fm/user/liubenjamin</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=speedrun.com&sz=32" alt=""> <a href="https://www.speedrun.com/users/lenbiu">speedrun.com/users/lenbiu</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=letterboxd.com&sz=32" alt=""> <a href="https://letterboxd.com/liubenjamin">letterboxd.com/liubenjamin</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=32" alt=""> <a href="https://www.linkedin.com/in/liu-benjamin">linkedin.com/in/liu-benjamin</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=rateyourmusic.com&sz=32" alt=""> <a href="https://rateyourmusic.com/~liubenjamin">rateyourmusic.com/~liubenjamin</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=tactics.tools&sz=32" alt=""> <a href="https://tactics.tools/player/na/lenbiu">tactics.tools/player/na/lenbiu</a></div>
+    <div class="links"><img src="https://www.google.com/s2/favicons?domain=worldcubeassociation.org&sz=32" alt=""> <a href="https://www.worldcubeassociation.org/persons/2015LIUB02">worldcubeassociation.org/persons/2015LIUB02</a></div>
+    <script>
+        const t = document.getElementById('theme');
+        const h = document.documentElement;
+        const stored = localStorage.getItem('theme') || 'light';
+        h.setAttribute('data-theme', stored);
+        t.textContent = h.getAttribute('data-theme') === 'light' ? '☾' : '☀';
+        t.onclick = () => {
+            const current = h.getAttribute('data-theme') === 'light';
+            h.setAttribute('data-theme', current ? 'dark' : 'light');
+            t.textContent = current ? '☀' : '☾';
+            localStorage.setItem('theme', current ? 'dark' : 'light');
+        };
+    </script>
+</body>
+</html>
