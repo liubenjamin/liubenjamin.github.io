@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://iosevka-webfonts.github.io/iosevka-term/woff2/iosevka-term-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
+    <title>now - benjamin liu</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪼</text></svg>">
+    <script>
+        const stored = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', stored);
+    </script>
+    <style>
+        :root {
+            --bg: #24273a;
+            --fg: #cad3f5;
+            --link: #8aadf4;
+            --link-hover: #b7bdf8;
+        }
+        [data-theme="light"] {
+            --bg: #eff1f5;
+            --fg: #4c4f69;
+            --link: #1e66f5;
+            --link-hover: #7287fd;
+        }
+        body {
+            font-family: 'Iosevka Term Web', monospace;
+            background: var(--bg);
+            color: var(--fg);
+            padding: 20px;
+            padding-top: 20px;
+            line-height: 1.6;
+            transition: background 0.2s, color 0.2s;
+            max-width: 55ch;
+            margin: 0;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 0;
+        }
+        h1 a {
+            font-family: 'Iosevka Term Web', monospace;
+            font-style: italic;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        a[target="_blank"]::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+            vertical-align: -3px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        a[target="_blank"]:hover::before {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+        a[href*="flightera.net"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=flightera.net&sz=32');
+        }
+        a[href*="datadoghq.com"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=datadoghq.com&sz=32');
+        }
+        a[href*="goodreads.com"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=goodreads.com&sz=32');
+        }
+        a[href*="benkuhn.net"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=benkuhn.net&sz=32');
+        }
+        a[href*="openstreetmap.org"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=openstreetmap.org&sz=32');
+        }
+        a[href*="blogspot.com"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=blogspot.com&sz=32');
+        }
+        a[href*="youtu.be"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=youtube.com&sz=32');
+        }
+        a[href*="tactics.tools"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=tactics.tools&sz=32');
+        }
+        a[href*="simonsarris.com"]::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=simonsarris.com&sz=32');
+        }
+        a.track-with-cover::before {
+            background-image: var(--album-cover);
+        }
+        a[href*="last.fm"]:not(.track-with-cover)::before {
+            background-image: url('https://www.google.com/s2/favicons?domain=last.fm&sz=32');
+        }
+        h1 {
+            font-size: 1em;
+            font-weight: normal;
+            font-style: italic;
+            margin: 0 0 20px 0;
+        }
+        p {
+            margin: 12px 0;
+        }
+        .timestamp {
+            margin-top: 30px;
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+        .intro {
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+        #listening {
+            width: max-content;
+        }
+        #track-info {
+            transition: opacity 0.5s;
+        }
+        #track-info.fade-out {
+            opacity: 0;
+        }
+        .footer {
+            margin-top: 30px;
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+        .footer a {
+            cursor: pointer;
+        }
+        @media (max-width: 640px) {
+            body {
+                font-size: 14px;
+                padding: 15px;
+                padding-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="/">←</a> now</h1>
+
+    <p class="intro">i'm now</p>
+
+    <p>living in nyc since <a href="https://www.flightera.net/en/flight_details/United+Airlines/UA2370/KSNA/2024-06-30" target="_blank">2024/07/01 04:48</a></p>
+
+    <p>working at <a href="https://www.datadoghq.com/product/workflow-automation/" target="_blank">datadog on workflow automation</a> - building new triggers and integrations, working on AI agents</p>
+
+    <p><a href="https://purplespengler.blogspot.com/2019/07/neeeeeeeeeeeeeeeeeeerrrrrrrds.html" target="_blank">lifting</a> every other day and started <a href="https://youtu.be/w3Vwmbzmonk" target="_blank">peloton</a></p>
+
+    <p>reading <a href="https://www.goodreads.com/book/show/199504414-you-have-not-yet-heard-your-favourite-song" target="_blank">you have not yet heard your favourite song</a> and looking for more <a href="https://www.benkuhn.net/weeklyessays/" target="_blank">life essays</a></p>
+
+    <p>taking more <a href="/pics/">photos</a> on my eos rebel sl1 + raybans</p>
+
+    <p>playing <a href="https://tactics.tools/player/na/lenbiu/NA1" target="_blank">TFT</a> - should go for challenger sometime</p>
+
+    <p id="listening">listening to <span id="track-info"><a href="https://www.last.fm/user/liubenjamin" target="_blank">one song on repeat probably</a></span></p>
+
+    <p>developing my digital footprint with <a href="https://map.simonsarris.com/p/breadcrumbs" target="_blank">breadcrumbs</a></p>
+
+    <div class="timestamp">updated 2025/11/24 12:12 from sf <a href="https://www.openstreetmap.org/?mlat=37.78639&mlon=-122.39774#map=15/37.78639/-122.39774" target="_blank">(37.78639, -122.39774)</a></div>
+
+    <div class="footer"><a id="theme"></a></div>
+
+    <script>
+        const t = document.getElementById('theme');
+        const h = document.documentElement;
+        const update = () => {
+            const isLight = h.getAttribute('data-theme') === 'light';
+            t.textContent = isLight ? 'switch to dark' : 'switch to light';
+        };
+        update();
+        t.onclick = () => {
+            const current = h.getAttribute('data-theme') === 'light';
+            h.setAttribute('data-theme', current ? 'dark' : 'light');
+            localStorage.setItem('theme', current ? 'dark' : 'light');
+            update();
+        };
+
+        // Fetch Last.fm recent track via CORS proxy
+        fetch('https://cors-anywhere.com/https://lfm.xiffy.nl/liubenjamin')
+            .then(response => response.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(data => {
+                const items = data.querySelectorAll('item');
+                if (items.length === 0) return;
+
+                const trackInfo = document.getElementById('track-info');
+                const profileUrl = 'https://www.last.fm/user/liubenjamin';
+                const placeholder = '<a href="' + profileUrl + '" target="_blank">one song on repeat probably</a>';
+                const firstTrack = items[0];
+                const title = firstTrack.querySelector('title').textContent;
+                const enclosure = firstTrack.querySelector('enclosure');
+                const imageUrl = enclosure ? enclosure.getAttribute('url') : null;
+
+                let showingTrack = false;
+
+                const toggle = () => {
+                    trackInfo.classList.add('fade-out');
+                    setTimeout(() => {
+                        if (showingTrack) {
+                            trackInfo.innerHTML = placeholder;
+                        } else {
+                            if (imageUrl) {
+                                trackInfo.innerHTML = `<a href="${profileUrl}" target="_blank" class="track-with-cover">${title}</a>`;
+                                trackInfo.querySelector('a').style.setProperty('--album-cover', `url(${imageUrl})`);
+                            } else {
+                                trackInfo.innerHTML = `<a href="${profileUrl}" target="_blank">${title}</a>`;
+                            }
+                        }
+                        showingTrack = !showingTrack;
+                        trackInfo.classList.remove('fade-out');
+                    }, 500);
+                };
+
+                // Preload image then start cycling
+                if (imageUrl) {
+                    const img = new Image();
+                    img.onload = () => setInterval(toggle, 5000);
+                    img.onerror = () => setInterval(toggle, 5000);
+                    img.src = imageUrl;
+                } else {
+                    setInterval(toggle, 5000);
+                }
+            })
+            .catch(err => {
+                console.error('Failed to fetch Last.fm data:', err);
+            });
+    </script>
+</body>
+</html>

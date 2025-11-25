@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="https://iosevka-webfonts.github.io/iosevka-term/woff2/iosevka-term-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
-    <title>benjamin liu</title>
+    <title>colophon - benjamin liu</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪼</text></svg>">
     <script>
         const stored = localStorage.getItem('theme') || 'light';
@@ -41,31 +41,25 @@
             display: inline-block;
             padding: 2px 0;
         }
+        h1 a {
+            font-family: 'Iosevka Term Web', monospace;
+            font-style: italic;
+        }
         a:hover {
             color: var(--link-hover);
             text-decoration: underline;
-        }
-        .links {
-            margin: 6px 0;
-        }
-        .emoji {
-            display: inline-block;
-            width: 16px;
-            text-align: center;
-            margin-right: 8px;
-            vertical-align: middle;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .links:hover .emoji {
-            opacity: 0.5;
-            transform: scale(1.1);
         }
         h1 {
             font-size: 1em;
             font-weight: normal;
             font-style: italic;
             margin: 0 0 20px 0;
-            padding-left: 2ch;
+        }
+        .item {
+            margin: 6px 0;
+        }
+        .label {
+            opacity: 0.6;
         }
         .footer {
             margin-top: 30px;
@@ -81,21 +75,16 @@
                 padding: 15px;
                 padding-top: 15px;
             }
-            .links {
+            .item {
                 margin: 8px 0;
-            }
-            a {
-                padding: 4px 0;
             }
         }
     </style>
 </head>
 <body>
-    <h1>home</h1>
-    <div class="links"><span class="emoji">📍</span> <a href="/now/">now</a></div>
-    <div class="links"><span class="emoji">🕵️</span> <a href="/stalk/">stalk</a></div>
-    <div class="links"><span class="emoji">📷</span> <a href="/pics/">pics</a></div>
-    <div class="links"><span class="emoji">⚙️</span> <a href="/colophon/">colophon</a></div>
+    <h1><a href="/">←</a> colophon</h1>
+    <div class="item"><span class="label">my favorite font:</span> iosevka term</div>
+    <div class="item"><span class="label">colors:</span> catppuccin macchiato / latte</div>
     <div class="footer"><a id="theme"></a></div>
     <script>
         const t = document.getElementById('theme');
