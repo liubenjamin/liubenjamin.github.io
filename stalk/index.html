@@ -5,90 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="https://iosevka-webfonts.github.io/iosevka-term/woff2/iosevka-term-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
     <title>stalk</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪼</text></svg>">
-    <script>
-        const stored = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', stored);
-    </script>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark')</script>
     <style>
-        :root {
-            --bg: #24273a;
-            --fg: #cad3f5;
-            --link: #8aadf4;
-            --link-hover: #b7bdf8;
-        }
-        [data-theme="light"] {
-            --bg: #eff1f5;
-            --fg: #4c4f69;
-            --link: #1e66f5;
-            --link-hover: #7287fd;
-        }
-        body {
-            font-family: 'Iosevka Term Web', monospace;
-            background: var(--bg);
-            color: var(--fg);
-            padding: 20px;
-            padding-top: 20px;
-            line-height: 1.6;
-            transition: background 0.2s, color 0.2s;
-            max-width: 600px;
-            margin: 0;
-        }
-        a {
-            color: var(--link);
-            text-decoration: none;
-            display: inline-block;
-            padding: 2px 0;
-        }
-        h1 a {
-            font-family: 'Iosevka Term Web', monospace;
-            font-style: italic;
-        }
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
-        }
         img {
             width: 16px;
             height: 16px;
             vertical-align: -3px;
             margin-right: 8px;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        a:hover img {
-            opacity: 0.5;
-            transform: scale(1.1);
+        .links:hover img {
+            animation: bounce 0.3s ease-in-out;
         }
         .links {
             margin: 6px 0;
             overflow-wrap: break-word;
+            opacity: 0;
+            animation: fadeSlideIn 0.5s ease-out forwards;
         }
-        h1 {
-            font-size: 1em;
-            font-weight: normal;
-            font-style: italic;
-            margin: 0 0 20px 0;
-        }
+        .links:nth-of-type(1) { animation-delay: 0.05s; }
+        .links:nth-of-type(2) { animation-delay: 0.08s; }
+        .links:nth-of-type(3) { animation-delay: 0.11s; }
+        .links:nth-of-type(4) { animation-delay: 0.14s; }
+        .links:nth-of-type(5) { animation-delay: 0.17s; }
+        .links:nth-of-type(6) { animation-delay: 0.2s; }
+        .links:nth-of-type(7) { animation-delay: 0.23s; }
+        .links:nth-of-type(8) { animation-delay: 0.26s; }
+        .links:nth-of-type(9) { animation-delay: 0.29s; }
+        .links:nth-of-type(10) { animation-delay: 0.32s; }
+        .links:nth-of-type(11) { animation-delay: 0.35s; }
+        .links:nth-of-type(12) { animation-delay: 0.38s; }
+        .links:nth-of-type(13) { animation-delay: 0.41s; }
         .footer {
-            margin-top: 30px;
-            opacity: 0.6;
-            font-size: 0.9em;
-        }
-        .footer a {
-            cursor: pointer;
+            animation-delay: 0.45s;
         }
         @media (max-width: 640px) {
-            body {
-                font-size: 14px;
-                padding: 15px;
-                padding-top: 15px;
-            }
             .links {
                 margin: 8px 0;
-            }
-            a {
-                padding: 4px 0;
             }
         }
     </style>
@@ -109,20 +65,6 @@
     <div class="links"><img src="https://www.google.com/s2/favicons?domain=worldcubeassociation.org&sz=32" alt=""> <a href="https://www.worldcubeassociation.org/persons/2015LIUB02">worldcubeassociation.org/persons/2015LIUB02</a></div>
     <div class="links"><img src="https://www.google.com/s2/favicons?domain=typeracerdata.com&sz=32" alt=""> <a href="https://www.typeracerdata.com/profile?username=liubenjamin">typeracerdata.com/profile?username=liubenjamin</a></div>
     <div class="footer"><a id="theme"></a></div>
-    <script>
-        const t = document.getElementById('theme');
-        const h = document.documentElement;
-        const update = () => {
-            const isLight = h.getAttribute('data-theme') === 'light';
-            t.textContent = isLight ? 'switch to dark' : 'switch to light';
-        };
-        update();
-        t.onclick = () => {
-            const current = h.getAttribute('data-theme') === 'light';
-            h.setAttribute('data-theme', current ? 'dark' : 'light');
-            localStorage.setItem('theme', current ? 'dark' : 'light');
-            update();
-        };
-    </script>
+    <script src="/script.js"></script>
 </body>
 </html>

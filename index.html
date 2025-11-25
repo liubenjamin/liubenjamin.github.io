@@ -5,87 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="https://iosevka-webfonts.github.io/iosevka-term/woff2/iosevka-term-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
+    <link href="/style.css?v=2" rel="stylesheet">
     <title>benjamin liu</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪼</text></svg>">
-    <script>
-        const stored = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', stored);
-    </script>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark')</script>
     <style>
-        :root {
-            --bg: #24273a;
-            --fg: #cad3f5;
-            --link: #8aadf4;
-            --link-hover: #b7bdf8;
-        }
-        [data-theme="light"] {
-            --bg: #eff1f5;
-            --fg: #4c4f69;
-            --link: #1e66f5;
-            --link-hover: #7287fd;
-        }
-        body {
-            font-family: 'Iosevka Term Web', monospace;
-            background: var(--bg);
-            color: var(--fg);
-            padding: 20px;
-            padding-top: 20px;
-            line-height: 1.6;
-            transition: background 0.2s, color 0.2s;
-            max-width: 600px;
-            margin: 0;
-        }
-        a {
-            color: var(--link);
-            text-decoration: none;
-            display: inline-block;
-            padding: 2px 0;
-        }
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
+        h1 {
+            padding-left: 2ch;
         }
         .links {
             margin: 6px 0;
+            opacity: 0;
+            animation: fadeSlideIn 0.5s ease-out forwards;
         }
+        .links:nth-of-type(1) { animation-delay: 0.05s; }
+        .links:nth-of-type(2) { animation-delay: 0.1s; }
+        .links:nth-of-type(3) { animation-delay: 0.15s; }
+        .links:nth-of-type(4) { animation-delay: 0.2s; }
         .emoji {
             display: inline-block;
             width: 16px;
             text-align: center;
             margin-right: 8px;
             vertical-align: middle;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .links:hover .emoji {
-            opacity: 0.5;
-            transform: scale(1.1);
+            animation: bounce 0.3s ease-in-out;
         }
-        h1 {
-            font-size: 1em;
-            font-weight: normal;
-            font-style: italic;
-            margin: 0 0 20px 0;
-            padding-left: 2ch;
+        .illustration {
+            margin-top: 30px;
+            margin-left: -35px;
+            opacity: 0;
+            animation: fadeSlideIn 0.5s ease-out 0.25s forwards;
+        }
+        .illustration img {
+            max-width: 140px;
+            height: auto;
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
         }
         .footer {
-            margin-top: 30px;
-            opacity: 0.6;
-            font-size: 0.9em;
-        }
-        .footer a {
-            cursor: pointer;
+            margin-top: 20px;
+            animation-delay: 0.3s;
         }
         @media (max-width: 640px) {
-            body {
-                font-size: 14px;
-                padding: 15px;
-                padding-top: 15px;
-            }
             .links {
                 margin: 8px 0;
             }
-            a {
-                padding: 4px 0;
+            .illustration {
+                margin-left: -30px;
             }
         }
     </style>
@@ -96,21 +65,22 @@
     <div class="links"><span class="emoji">🕵️</span> <a href="/stalk/">stalk</a></div>
     <div class="links"><span class="emoji">📷</span> <a href="/pics/">pics</a></div>
     <div class="links"><span class="emoji">⚙️</span> <a href="/colophon/">colophon</a></div>
+    <div class="illustration"><img src="/img/b.png" alt=""></div>
     <div class="footer"><a id="theme"></a></div>
+    <script src="/script.js"></script>
     <script>
-        const t = document.getElementById('theme');
-        const h = document.documentElement;
-        const update = () => {
-            const isLight = h.getAttribute('data-theme') === 'light';
-            t.textContent = isLight ? 'switch to dark' : 'switch to light';
-        };
-        update();
-        t.onclick = () => {
-            const current = h.getAttribute('data-theme') === 'light';
-            h.setAttribute('data-theme', current ? 'dark' : 'light');
-            localStorage.setItem('theme', current ? 'dark' : 'light');
-            update();
-        };
+        // Illustration tilt effect
+        const img = document.querySelector('.illustration img');
+        const maxTilt = 15;
+        img.addEventListener('mousemove', (e) => {
+            const rect = img.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            img.style.transform = `perspective(500px) rotateY(${x * maxTilt}deg) rotateX(${-y * maxTilt}deg)`;
+        });
+        img.addEventListener('mouseleave', () => {
+            img.style.transform = '';
+        });
     </script>
 </body>
 </html>
