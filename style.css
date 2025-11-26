@@ -38,15 +38,15 @@ html, *, *::before, *::after {
 html {
     min-height: 100%;
     background: var(--bg);
+    transition: background 0.2s;
 }
 
 body {
     font-family: 'Iosevka Term Web', monospace;
-    background: var(--bg);
     color: var(--fg);
     padding: 20px;
     line-height: 1.6;
-    transition: background 0.2s, color 0.2s;
+    transition: color 0.2s;
     max-width: 600px;
     margin: 0;
 }
@@ -110,6 +110,11 @@ h1 {
 h1 a {
     font-family: 'Iosevka Term Web', monospace;
     font-style: italic;
+    color: var(--fg);
+}
+
+h1 a:hover {
+    color: var(--fg);
 }
 
 /* Footer */
@@ -132,8 +137,8 @@ h1 a {
 /* Cursor trail */
 .cursor-trail {
     position: fixed;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     background: url('/img/cursortrail.png') center/contain no-repeat;
     pointer-events: none;
     z-index: 9998;

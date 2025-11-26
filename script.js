@@ -1,17 +1,19 @@
 // Theme toggle
 const t = document.getElementById('theme');
 const h = document.documentElement;
-const update = () => {
-    const isLight = h.getAttribute('data-theme') === 'light';
-    t.textContent = isLight ? 'switch to dark' : 'switch to light';
-};
-update();
-t.onclick = () => {
-    const current = h.getAttribute('data-theme') === 'light';
-    h.setAttribute('data-theme', current ? 'dark' : 'light');
-    localStorage.setItem('theme', current ? 'dark' : 'light');
+if (t) {
+    const getTheme = () => h.getAttribute('data-theme') || 'dark';
+    const update = () => {
+        t.textContent = getTheme() === 'light' ? 'switch to dark' : 'switch to light';
+    };
     update();
-};
+    t.onclick = () => {
+        const newTheme = getTheme() === 'light' ? 'dark' : 'light';
+        h.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        update();
+    };
+}
 
 // Cursor trail (osu disjoint trail - time-based spawn, linear fade)
 // Only on devices with hover (mouse/trackpad), not touch
@@ -22,6 +24,7 @@ if (window.matchMedia('(hover: hover)').matches) {
     const trailInterval = 1000 / 60;
     let lastTrailTime = 0;
     let mouseX = 0, mouseY = 0;
+    let hasMoved = false;
 
     function spawnTrail(x, y) {
         let trail = trailPool.find(t => !t.active);
@@ -35,20 +38,21 @@ if (window.matchMedia('(hover: hover)').matches) {
         }
         trail.active = true;
         trail.spawnTime = performance.now();
-        trail.el.style.left = x - 24 + 'px';
-        trail.el.style.top = y - 24 + 'px';
+        trail.el.style.left = x - 28 + 'px';
+        trail.el.style.top = y - 28 + 'px';
         trail.el.style.opacity = 1;
     }
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        hasMoved = true;
     });
 
     function animateTrail() {
         const now = performance.now();
 
-        if (now - lastTrailTime >= trailInterval) {
+        if (hasMoved && now - lastTrailTime >= trailInterval) {
             spawnTrail(mouseX, mouseY);
             lastTrailTime = now;
         }
